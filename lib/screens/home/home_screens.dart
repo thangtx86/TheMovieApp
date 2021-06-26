@@ -1,0 +1,66 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:flutter/material.dart';
+import 'package:movieapp/base/base_bloc_provider.dart';
+import 'package:movieapp/screens/home/home_bloc.dart';
+import 'package:movieapp/di/app_module.dart';
+import 'package:movieapp/utils/constans.dart';
+import 'package:movieapp/widget/movie_baner_slider.dart';
+import 'package:movieapp/widget/tabbar_categories.dart';
+import 'package:provider/provider.dart';
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BaseProviderBloc<HomeBloc>(
+      bloc: locator<HomeBloc>(),
+      child: HomeWidget(),
+    );
+  }
+}
+
+class HomeWidget extends StatefulWidget {
+  @override
+  _HomeWidgetState createState() => _HomeWidgetState();
+}
+
+class _HomeWidgetState extends State<HomeWidget> {
+  HomeBloc _movieListBloc;
+
+  @override
+  void initState() {
+    _movieListBloc = context.read<HomeBloc>();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.white,
+        leading: Icon(
+          EvaIcons.menu2Outline,
+          color: Colors.black,
+        ),
+        actions: <Widget>[
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                EvaIcons.searchOutline,
+                color: Colors.black,
+              ))
+        ],
+      ),
+      body: Column(
+        children: <Widget>[
+          TabbarCategoriesWidget(
+            onCategoryChange: (categories) =>
+                {_movieListBloc.onChangeCategory(categories)},
+          ),
+          Expanded(child: MovieViewPagerWidget()),
+        ],
+      ),
+    );
+  }
+}
