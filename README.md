@@ -13,10 +13,15 @@ A sample Flutter application with main purpose is learning.
 <a href='https://movie-apidoc.web.app/'>https://movie-apidoc.web.app/</a>  
 ## Version
 >Flutter •2.0.6
+
 >Dart •2.11.0  
+
 >Dio: • 4.0.0
+
 >bloc: • 7.0.0
+
 >Rxdart: • 0.27.1
+
 >Provider: • 5.0.0
 
 ## Preview 
