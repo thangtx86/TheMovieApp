@@ -16,8 +16,6 @@ class MovieViewPagerWidget extends StatefulWidget {
 }
 
 class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
-  List<VacationBean> _list = VacationBean.generate();
-
   PageController pageController;
 
   double viewportFraction = 0.8;
@@ -49,7 +47,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 2,
+      height: (MediaQuery.of(context).size.height / 1.6),
       child: StreamBuilder<BaseState>(
           stream: _movieListBloc.moviesByCategory,
           builder: (context, AsyncSnapshot<BaseState> snapshot) {
@@ -94,7 +92,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
               ],
             ),
           ),
-          Expanded(child: _buildSliderWidget(movies, size))
+          Flexible(child: _buildSliderWidget(movies, size))
         ],
       );
     } else {
@@ -113,25 +111,27 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
               right: 20,
               left: 20,
               top: 30,
-              bottom: 50,
+              bottom: 20,
             ),
             child: Column(
               children: <Widget>[
-                Container(
-                  height: size.height / 2,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(50.0),
-                    ),
-                    shape: BoxShape.rectangle,
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage("https://image.tmdb.org/t/p/w200/" +
-                          movies[index].posterPath),
+                Flexible(
+                  child: Container(
+                    height: 450,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(50.0),
+                      ),
+                      shape: BoxShape.rectangle,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage("https://image.tmdb.org/t/p/w500/" +
+                            movies[index].posterPath),
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(height: 12.0),
+                SizedBox(height: 10.0),
                 Container(
                   alignment: Alignment.center,
                   child: Padding(
@@ -148,7 +148,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
                     ),
                   ),
                 ),
-                SizedBox(height: 13.0),
+                SizedBox(height: 12.0),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -185,22 +185,5 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
             ),
           );
         });
-  }
-}
-
-class VacationBean {
-  String url;
-  String name;
-
-  VacationBean(this.url, this.name);
-
-  static List<VacationBean> generate() {
-    return [
-      VacationBean("assets/images/1.jpg", "Japan"),
-      VacationBean("assets/images/2.jpg", "Franch"),
-      VacationBean("assets/images/3.jpg", "Paris"),
-      VacationBean("assets/images/4.jpg", "London"),
-      VacationBean("assets/images/5.jpg", "China"),
-    ];
   }
 }

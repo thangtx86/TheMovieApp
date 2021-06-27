@@ -39,22 +39,61 @@ class _HomeWidgetState extends State<HomeWidget> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: _buildAppBarWidget(),
-      body: Column(
-        children: <Widget>[
-          TabbarCategoriesWidget(
-            onCategoryChange: (categories) =>
-                {_movieListBloc.onChangeCategory(categories)},
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          GenreMovieWidget(),
-          SizedBox(
-            height: 10,
-          ),
-          Expanded(child: MovieViewPagerWidget()),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            TabbarCategoriesWidget(
+              onCategoryChange: (categories) =>
+                  {_movieListBloc.onChangeCategory(categories)},
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            GenreMovieWidget(),
+            SizedBox(
+              height: 10,
+            ),
+            MovieViewPagerWidget(),
+            SizedBox(
+              height: 10,
+            ),
+            GenreMovieWidget(),
+            SizedBox(
+              height: 10,
+            ),
+            GenreMovieWidget(),
+            SizedBox(
+              height: 10,
+            ),
+            GenreMovieWidget(),
+            SizedBox(
+              height: 10,
+            ),
+            GenreMovieWidget(),
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildBody() {
+    return Column(
+      children: <Widget>[
+        TabbarCategoriesWidget(
+          onCategoryChange: (categories) =>
+              {_movieListBloc.onChangeCategory(categories)},
+        ),
+        SizedBox(
+          height: 5,
+        ),
+        GenreMovieWidget(),
+        SizedBox(
+          height: 10,
+        ),
+        Expanded(child: MovieViewPagerWidget()),
+      ],
     );
   }
 
