@@ -28,12 +28,17 @@ class HomeBloc extends BaseBloc {
 
   BehaviorSubject<BaseState> _genresSubject = BehaviorSubject<BaseState>();
 
+  BehaviorSubject<BaseState> _movieDiscoverSubject =
+      BehaviorSubject<BaseState>();
+
   //stream
   Stream<BaseState> get moviesByCategory => _movieByCategorySubject.stream;
 
   Category get currentCategory => _categorySubject.stream.value;
 
   Stream<BaseState> get genresListStream => _genresSubject.stream;
+
+  Stream<BaseState> get moviesDiscover => _movieDiscoverSubject.stream;
 
   void _listenCategoryChange() {
     _categorySubject.listen((category) {
@@ -69,6 +74,17 @@ class HomeBloc extends BaseBloc {
 
   void onChangeCategory(Category category) {
     _categorySubject.add(category);
+  }
+
+  Future fetchDiscoverMovie() async {
+    await Future.delayed(Duration(milliseconds: 1000));
+    var response = await _movieRespository.fetchDiscoverMovie(_FIRST_PAGE);
+    if (response.error.isEmpty) {
+      _movieDiscoverSubject.add(StateLoaded<List<Movie>>(response.results));
+      print("Discover----" + response.results.length.toString());
+    } else {
+      _movieDiscoverSubject.add(StateError("sssss"));
+    }
   }
 
   dispose() {

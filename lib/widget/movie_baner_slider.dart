@@ -155,7 +155,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
                   children: <Widget>[
                     RatingBar.builder(
                       itemSize: 16.0,
-                      initialRating: movies[index].voteCount / 2,
+                      initialRating: movies[index].voteAverage / 2,
                       minRating: 1,
                       direction: Axis.horizontal,
                       allowHalfRating: true,
@@ -173,7 +173,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
                       width: 5.0,
                     ),
                     Text(
-                      movies[index].voteCount.toString(),
+                      movies[index].voteAverage.toString(),
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 16.0,

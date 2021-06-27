@@ -20,6 +20,8 @@ class _TabbarCategoriesWidgetState extends State<TabbarCategoriesWidget> {
       margin: EdgeInsets.symmetric(vertical: 10.0),
       height: 60,
       child: ListView.builder(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemBuilder: (item, index) {
           return _buildItemTabBar(context, index);

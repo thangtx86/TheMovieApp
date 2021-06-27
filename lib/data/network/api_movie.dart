@@ -47,4 +47,22 @@ class ApiMovie implements ApiImpl {
       return GenresRespone.error("$error");
     }
   }
+
+  @override
+  Future<MoviesResponse> fetchDicoverMovie(int page) async {
+    final discoverMovie = '$_BASE_URL/discover/movie';
+    var params = {
+      "api_key": _API_KEY,
+      "language": "en-US",
+      "page": page,
+    };
+    try {
+      Response response =
+          await _dio.get(discoverMovie, queryParameters: params);
+      return MoviesResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception occured: $error stackTrace: $stacktrace");
+      return MoviesResponse.error("$error");
+    }
+  }
 }

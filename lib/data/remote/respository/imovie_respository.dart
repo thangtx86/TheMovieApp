@@ -6,4 +6,6 @@ abstract class IMovieRespository {
   Future<MoviesResponse> fetchMovieByCategory(Category category, int page);
 
   Future<GenresRespone> fetchGenreMovie();
+
+  Future<MoviesResponse> fetchDiscoverMovie(int page);
 }

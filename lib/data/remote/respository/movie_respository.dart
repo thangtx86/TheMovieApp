@@ -19,4 +19,9 @@ class MovieRespository implements IMovieRespository {
   Future<GenresRespone> fetchGenreMovie() {
     return _apiImpl.fetchGenreMovie();
   }
+
+  @override
+  Future<MoviesResponse> fetchDiscoverMovie(int page) {
+    return _apiImpl.fetchDicoverMovie(page);
+  }
 }
