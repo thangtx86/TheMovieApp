@@ -1,6 +1,8 @@
 import 'package:movieapp/base/base_bloc.dart';
 import 'package:movieapp/base/base_state.dart';
 import 'package:movieapp/data/remote/model/categories.dart';
+import 'package:movieapp/data/remote/model/genre.dart';
+import 'package:movieapp/data/remote/model/genre_response.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
 import 'package:movieapp/data/remote/respository/movie_respository.dart';
 
@@ -24,10 +26,14 @@ class HomeBloc extends BaseBloc {
   BehaviorSubject<Category> _categorySubject =
       BehaviorSubject.seeded(listCategory[0]);
 
+  BehaviorSubject<BaseState> _genresSubject = BehaviorSubject<BaseState>();
+
   //stream
   Stream<BaseState> get moviesByCategory => _movieByCategorySubject.stream;
 
   Category get currentCategory => _categorySubject.stream.value;
+
+  Stream<BaseState> get genresListStream => _genresSubject.stream;
 
   void _listenCategoryChange() {
     _categorySubject.listen((category) {
@@ -46,6 +52,18 @@ class HomeBloc extends BaseBloc {
     } else {
       _movieByCategorySubject.add(StateError("Fetch Api Error"));
       print("-------Erooor");
+    }
+  }
+
+  Future requestGenres() async {
+    await Future.delayed(Duration(milliseconds: 1000));
+
+    var response = await _movieRespository.fetchGenreMovie();
+    if (response.error.isEmpty) {
+      _genresSubject.add(StateLoaded<List<Genre>>(response.genres));
+      print("Genres----" + response.genres.length.toString());
+    } else {
+      _genresSubject.add(StateError("sssss"));
     }
   }
 

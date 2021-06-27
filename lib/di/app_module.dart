@@ -16,7 +16,7 @@ Future setupLocator() async {
 }
 
 Future provideModule() async {
-  Dio dio = Dio(
+  var dio = Dio(
     BaseOptions(
       connectTimeout: 10000,
       receiveTimeout: 6000,

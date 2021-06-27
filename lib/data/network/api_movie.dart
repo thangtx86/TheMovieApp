@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:movieapp/data/network/api_impl.dart';
 import 'package:movieapp/data/remote/model/categories.dart';
+import 'package:movieapp/data/remote/model/genre_response.dart';
 import 'package:movieapp/data/remote/model/movie_list_response.dart';
 
 class ApiMovie implements ApiImpl {
@@ -17,7 +18,7 @@ class ApiMovie implements ApiImpl {
     final movieByCategory = '$_BASE_URL/movie/${category.query}';
     var params = {
       "api_key": _API_KEY,
-      "language": "vi",
+      "language": "en-US",
       "page": page,
     };
     try {
@@ -27,6 +28,23 @@ class ApiMovie implements ApiImpl {
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
       return MoviesResponse.error("$error");
+    }
+  }
+
+  @override
+  Future<GenresRespone> fetchGenreMovie() async {
+    final genreMovie = '$_BASE_URL/genre/movie/list';
+    var params = {
+      "api_key": _API_KEY,
+      "language": "en-US",
+    };
+
+    try {
+      Response response = await _dio.get(genreMovie, queryParameters: params);
+      return GenresRespone.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception occured: $error stackTrace: $stacktrace");
+      return GenresRespone.error("$error");
     }
   }
 }

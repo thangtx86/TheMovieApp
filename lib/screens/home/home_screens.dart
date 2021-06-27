@@ -4,6 +4,7 @@ import 'package:movieapp/base/base_bloc_provider.dart';
 import 'package:movieapp/screens/home/home_bloc.dart';
 import 'package:movieapp/di/app_module.dart';
 import 'package:movieapp/utils/constans.dart';
+import 'package:movieapp/widget/genre_movie_widget.dart';
 import 'package:movieapp/widget/movie_baner_slider.dart';
 import 'package:movieapp/widget/tabbar_categories.dart';
 import 'package:provider/provider.dart';
@@ -29,6 +30,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   void initState() {
     _movieListBloc = context.read<HomeBloc>();
+    _movieListBloc.requestGenres();
     super.initState();
   }
 
@@ -36,31 +38,42 @@ class _HomeWidgetState extends State<HomeWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.white,
-        leading: Icon(
-          EvaIcons.menu2Outline,
-          color: Colors.black,
-        ),
-        actions: <Widget>[
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                EvaIcons.searchOutline,
-                color: Colors.black,
-              ))
-        ],
-      ),
+      appBar: _buildAppBarWidget(),
       body: Column(
         children: <Widget>[
           TabbarCategoriesWidget(
             onCategoryChange: (categories) =>
                 {_movieListBloc.onChangeCategory(categories)},
           ),
+          SizedBox(
+            height: 5,
+          ),
+          GenreMovieWidget(),
+          SizedBox(
+            height: 10,
+          ),
           Expanded(child: MovieViewPagerWidget()),
         ],
       ),
+    );
+  }
+
+  Widget _buildAppBarWidget() {
+    return AppBar(
+      elevation: 0.0,
+      backgroundColor: Colors.white,
+      leading: Icon(
+        EvaIcons.menu2Outline,
+        color: Colors.black,
+      ),
+      actions: <Widget>[
+        IconButton(
+            onPressed: () {},
+            icon: Icon(
+              EvaIcons.searchOutline,
+              color: Colors.black,
+            ))
+      ],
     );
   }
 }
