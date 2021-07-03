@@ -26,7 +26,7 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
-  HomeBloc _movieListBloc;
+  late HomeBloc _movieListBloc;
 
   @override
   void initState() {
@@ -40,7 +40,22 @@ class _HomeWidgetState extends State<HomeWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: _buildAppBarWidget(),
+      appBar: AppBar(
+      elevation: 0.0,
+      backgroundColor: Colors.white,
+      leading: Icon(
+        EvaIcons.menu2Outline,
+        color: Colors.black,
+      ),
+      actions: <Widget>[
+        IconButton(
+            onPressed: () {},
+            icon: Icon(
+              EvaIcons.searchOutline,
+              color: Colors.black,
+            ))
+      ],
+    ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -71,22 +86,4 @@ class _HomeWidgetState extends State<HomeWidget> {
     );
   }
 
-  Widget _buildAppBarWidget() {
-    return AppBar(
-      elevation: 0.0,
-      backgroundColor: Colors.white,
-      leading: Icon(
-        EvaIcons.menu2Outline,
-        color: Colors.black,
-      ),
-      actions: <Widget>[
-        IconButton(
-            onPressed: () {},
-            icon: Icon(
-              EvaIcons.searchOutline,
-              color: Colors.black,
-            ))
-      ],
-    );
-  }
 }

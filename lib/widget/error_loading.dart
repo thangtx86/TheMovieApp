@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ErrorLoading extends StatelessWidget {
-  final String message;
-  final double width;
-  final double height;
+  final String? message;
+  final double? width;
+  final double? height;
 
-  const ErrorLoading({Key key, this.message, this.width, @required this.height})
+  const ErrorLoading(
+      {Key? key, this.message, this.width, @required this.height})
       : super(key: key);
 
   @override
@@ -22,13 +23,13 @@ class ErrorLoading extends StatelessWidget {
           FaIcon(
             FontAwesomeIcons.stackOverflow,
             color: Colors.white70,
-            size: height / 3,
+            size: (height ?? 0) / 3,
           ),
           SizedBox(
             height: 8,
           ),
           Text(
-            message,
+            message ?? "",
             textAlign: TextAlign.center,
             style: TextStyle(
                 color: Colors.white70,

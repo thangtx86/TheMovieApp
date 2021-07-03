@@ -1,7 +1,7 @@
 import 'package:movieapp/data/remote/model/genre.dart';
 
 class GenresRespone {
-  List<Genre> genres;
+  List<Genre>? genres;
   String error = '';
 
   GenresRespone({this.genres});
@@ -9,9 +9,9 @@ class GenresRespone {
 
   GenresRespone.fromJson(Map<String, dynamic> json) {
     if (null != json['genres']) {
-      genres = new List<Genre>();
+      genres = [];
       json['genres'].forEach((item) {
-        genres.add(new Genre.fromJson(item));
+        genres?.add(new Genre.fromJson(item));
       });
     }
   }

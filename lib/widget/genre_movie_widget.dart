@@ -10,7 +10,7 @@ class GenreMovieWidget extends StatelessWidget {
     return StreamBuilder<BaseState>(
         stream: context.watch<HomeBloc>().genresListStream,
         builder: (context, AsyncSnapshot<BaseState> snapshot) {
-          BaseState state = snapshot.data;
+          BaseState? state = snapshot.data;
           if (snapshot.hasData && state is StateLoaded<List<Genre>>) {
             List<Genre> genres = state.value;
             return Container(
@@ -31,7 +31,8 @@ class GenreMovieWidget extends StatelessWidget {
               child: Text('Nhu cco'),
             );
           }
-        });
+        }
+        );
   }
 
   Widget _buildItemGenre(Genre genre) {
@@ -51,7 +52,7 @@ class GenreMovieWidget extends StatelessWidget {
           primary: Colors.white,
         ),
         child: Text(
-          genre.name,
+          genre.name ?? "",
           style: TextStyle(fontSize: 14),
         ),
       ),

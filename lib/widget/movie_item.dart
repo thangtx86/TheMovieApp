@@ -5,7 +5,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
 
 class MovieItem extends StatelessWidget {
-  const MovieItem({Key key, @required this.movie}) : super(key: key);
+  const MovieItem({Key? key, required this.movie}) : super(key: key);
 
   final Movie movie;
 
@@ -16,7 +16,7 @@ class MovieItem extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Hero(
-            tag: movie.id,
+            tag: movie.id ?? 0,
             child: Container(
               width: size.width / 3,
               height: size.height / 5,
@@ -27,7 +27,7 @@ class MovieItem extends StatelessWidget {
                 shape: BoxShape.rectangle,
                 image: DecorationImage(
                     image: NetworkImage(
-                        "https://image.tmdb.org/t/p/w200/" + movie.posterPath),
+                        "https://image.tmdb.org/t/p/w200/" + movie.posterPath!),
                     fit: BoxFit.cover),
               ),
             ),
@@ -38,7 +38,7 @@ class MovieItem extends StatelessWidget {
           Container(
             width: size.width / 3,
             child: Text(
-              movie.title,
+              movie.title ?? "",
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               style: TextStyle(
@@ -56,7 +56,7 @@ class MovieItem extends StatelessWidget {
             children: <Widget>[
               RatingBar.builder(
                 itemSize: 12,
-                initialRating: movie.voteAverage / 2,
+                initialRating: (movie.voteAverage ?? 0) / 2,
                 minRating: 1,
                 direction: Axis.horizontal,
                 allowHalfRating: true,

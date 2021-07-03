@@ -4,7 +4,7 @@ import 'package:movieapp/utils/constans.dart';
 
 class TabbarCategoriesWidget extends StatefulWidget {
   final Function(Category) onCategoryChange;
-  const TabbarCategoriesWidget({Key key, this.onCategoryChange})
+  const TabbarCategoriesWidget({Key? key, required this.onCategoryChange})
       : super(key: key);
 
   @override
@@ -49,8 +49,8 @@ class _TabbarCategoriesWidgetState extends State<TabbarCategoriesWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              listCategory[index].name,
-              style: Theme.of(context).textTheme.headline5.copyWith(
+              listCategory[index].name ?? "",
+              style: Theme.of(context).textTheme.headline5!.copyWith(
                   fontWeight: FontWeight.w600,
                   color: index == _positionSelectTab
                       ? Colors.black

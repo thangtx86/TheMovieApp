@@ -1,18 +1,18 @@
 class Movie {
-  double voteAverage;
-  int id;
-  int voteCount;
-  String releaseDate;
-  bool adult;
-  String backdropPath;
-  String title;
-  List<int> genreIds;
-  double popularity;
-  String originalLanguage;
-  String originalTitle;
-  String posterPath;
-  String overview;
-  bool video;
+  double? voteAverage;
+  int? id;
+  int? voteCount;
+  String? releaseDate;
+  bool? adult;
+  String? backdropPath;
+  String? title;
+  List<int>? genreIds;
+  double? popularity;
+  String? originalLanguage;
+  String? originalTitle;
+  String? posterPath;
+  String? overview;
+  bool? video;
 
   Movie(
       {this.voteAverage,

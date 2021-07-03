@@ -6,8 +6,8 @@ class RouteConfig {
   static const SPLASH_SCREEN = "/splash";
   static const HOME_SCREEN = "/home";
 
-  static Route<dynamic> generateRoute(RouteSettings settings) {
-    Route result;
+  static Route<dynamic>? generateRoute(RouteSettings settings) {
+    Route? result;
     switch (settings.name) {
       case SPLASH_SCREEN:
         result = MaterialPageRoute(builder: (_) => SplashScreen());

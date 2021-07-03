@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-
 import 'package:get_it/get_it.dart';
+
 import 'package:movieapp/screens/home/home_bloc.dart';
 import 'package:movieapp/screens/splash/splash_bloc.dart';
 import 'package:movieapp/data/network/api_impl.dart';

@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
 
 class MoviesResponse {
-  int totalPages;
-  Dates dates;
-  int page;
-  int totalResults;
-  List<Movie> results;
+  int? totalPages;
+  Dates? dates;
+  int? page;
+  int? totalResults;
+  List<Movie>? results;
   String error = '';
   MoviesResponse(
       {this.totalPages,
@@ -23,9 +22,9 @@ class MoviesResponse {
     page = json['page'];
     totalResults = json['total_results'];
     if (json['results'] != null) {
-      results = new List<Movie>();
+      results = [];
       json['results'].forEach((v) {
-        results.add(new Movie.fromJson(v));
+        results?.add(new Movie.fromJson(v));
       });
     }
   }
@@ -34,20 +33,20 @@ class MoviesResponse {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['total_pages'] = this.totalPages;
     if (this.dates != null) {
-      data['dates'] = this.dates.toJson();
+      data['dates'] = this.dates?.toJson();
     }
     data['page'] = this.page;
     data['total_results'] = this.totalResults;
     if (this.results != null) {
-      data['results'] = this.results.map((v) => v.toJson()).toList();
+      data['results'] = this.results?.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
 class Dates {
-  String minimum;
-  String maximum;
+  String? minimum;
+  String? maximum;
 
   Dates({this.minimum, this.maximum});
 

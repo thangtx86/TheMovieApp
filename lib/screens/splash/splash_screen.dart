@@ -22,7 +22,7 @@ class _SplashWidget extends StatefulWidget {
 }
 
 class _SplashWidgetState extends State<_SplashWidget> {
-  SplashBloc _splashBloc;
+  late SplashBloc _splashBloc;
 
   @override
   void initState() {

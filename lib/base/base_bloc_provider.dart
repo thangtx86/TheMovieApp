@@ -6,7 +6,7 @@ class BaseProviderBloc<T extends BaseBloc> extends StatefulWidget {
   final T bloc;
   final Widget child;
 
-  const BaseProviderBloc({Key key, @required this.bloc, @required this.child})
+  const BaseProviderBloc({Key? key, required this.bloc, required this.child})
       : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class _BaseProviderBlocState<T extends BaseBloc>
   Widget build(BuildContext context) {
     return Provider<T>(
       create: (BuildContext context) {
-        return widget.bloc;
+        return widget.bloc as T;
       },
       child: widget.child,
     );
@@ -28,7 +28,6 @@ class _BaseProviderBlocState<T extends BaseBloc>
   @override
   void dispose() {
     widget.bloc.dispose();
-    print("${widget.bloc.runtimeType} is dispose");
     super.dispose();
   }
 }

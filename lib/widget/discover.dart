@@ -7,14 +7,14 @@ import 'package:movieapp/widget/movie_item.dart';
 import 'package:provider/provider.dart';
 
 class DiscoverWidget extends StatefulWidget {
-  const DiscoverWidget({Key key}) : super(key: key);
+  const DiscoverWidget({Key? key}) : super(key: key);
 
   @override
   _DiscoverWidgetState createState() => _DiscoverWidgetState();
 }
 
 class _DiscoverWidgetState extends State<DiscoverWidget> {
-  HomeBloc homeBloc;
+  late HomeBloc homeBloc;
 
   @override
   void initState() {
@@ -35,7 +35,7 @@ class _DiscoverWidgetState extends State<DiscoverWidget> {
               stream: homeBloc.moviesDiscover,
               builder: (context, AsyncSnapshot<BaseState> snapshot) {
                 if (snapshot.hasData) {
-                  BaseState state = snapshot.data;
+                  BaseState state = snapshot.data!;
                   if (state is StateLoaded<List<Movie>>) {
                     List<Movie> movies = state.value;
                     return _buildMovieItem(movies);
@@ -77,7 +77,7 @@ class _DiscoverWidgetState extends State<DiscoverWidget> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text("Discover",
-              style: Theme.of(context).textTheme.subtitle1.copyWith(
+              style: Theme.of(context).textTheme.subtitle1!.copyWith(
                     fontWeight: FontWeight.bold,
                   )),
           FaIcon(

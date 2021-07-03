@@ -16,13 +16,13 @@ class MovieViewPagerWidget extends StatefulWidget {
 }
 
 class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
-  PageController pageController;
+  PageController? pageController;
 
   double viewportFraction = 0.8;
 
   double pageOffset = 0;
 
-  HomeBloc _movieListBloc;
+  late HomeBloc _movieListBloc;
 
   @override
   void initState() {
@@ -33,7 +33,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
         PageController(initialPage: 1, viewportFraction: viewportFraction)
           ..addListener(() {
             setState(() {
-              pageOffset = pageController.page;
+              pageOffset = pageController?.page ?? 0;
             });
           });
   }
@@ -52,12 +52,12 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
           stream: _movieListBloc.moviesByCategory,
           builder: (context, AsyncSnapshot<BaseState> snapshot) {
             if (snapshot.hasData) {
-              BaseState state = snapshot.data;
+              BaseState state = snapshot.data!;
               return _buildViewPageWidget(state);
             } else {
               return ErrorLoading(
                 message: "Fetch data not handle..",
-                height: 100.0 + 50,
+                height: 150,
               );
             }
           }),
@@ -81,7 +81,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text("View All",
-                    style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
                           fontWeight: FontWeight.w600,
                         )),
                 FaIcon(
@@ -126,7 +126,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage("https://image.tmdb.org/t/p/w500/" +
-                            movies[index].posterPath),
+                            movies[index].posterPath!),
                       ),
                     ),
                   ),
@@ -137,7 +137,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      movies[index].title,
+                      movies[index].title ?? "",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
@@ -155,7 +155,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
                   children: <Widget>[
                     RatingBar.builder(
                       itemSize: 16.0,
-                      initialRating: movies[index].voteAverage / 2,
+                      initialRating: (movies[index].voteAverage ?? 0) / 2,
                       minRating: 1,
                       direction: Axis.horizontal,
                       allowHalfRating: true,
