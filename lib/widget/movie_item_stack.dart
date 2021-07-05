@@ -35,9 +35,10 @@ class MovieItemStack extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Color(0xFFF99F00), Color(0xFFDB3069)]),
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Color(0xFFF99F00), Color(0xFFDB3069)],
+                ),
                 shape: BoxShape.circle,
               ),
               child: Text(
