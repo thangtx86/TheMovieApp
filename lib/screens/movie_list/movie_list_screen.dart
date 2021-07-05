@@ -108,74 +108,12 @@ class _MovieListWidgetState extends State<MovieListWidget> {
           return MovieItemStack(movie: movies[index]!);
         },
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 3.5 / 5),
+          crossAxisCount: 2,
+          childAspectRatio: 7 / 9,
+        ),
       );
     } else {
       return Container(child: Text("Errors 2"));
     }
-    //   return Container(
-    //     child: Stack(
-    //       children: [
-    //         Container(
-    //           width: size.width / 3,
-    //           height: size.height / 4,
-    //           decoration: BoxDecoration(
-    //             borderRadius: BorderRadius.all(
-    //               Radius.circular(6.0),
-    //             ),
-    //             shape: BoxShape.rectangle,
-    //             image: DecorationImage(
-    //                 image: NetworkImage("https://image.tmdb.org/t/p/w200/" +
-    //                     "/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg"),
-    //                 fit: BoxFit.cover),
-    //           ),
-    //         ),
-    //         Positioned(
-    //           top: 15,
-    //           right: 15,
-    //           child: Container(
-    //             alignment: Alignment.center,
-    //             width: 45.0,
-    //             height: 45.0,
-    //             decoration: BoxDecoration(
-    //               color: Colors.white,
-    //               gradient: LinearGradient(
-    //                   begin: Alignment.topLeft,
-    //                   end: Alignment.bottomRight,
-    //                   colors: [Color(0xFFF99F00), Color(0xFFDB3069)]),
-    //               shape: BoxShape.circle,
-    //             ),
-    //             child: Text(
-    //               "9.0",
-    //               style: TextStyle(color: Colors.white),
-    //             ),
-    //           ),
-    //         ),
-    //         Positioned(
-    //           bottom: 8,
-    //           left: 8,
-    //           child: Column(
-    //             crossAxisAlignment: CrossAxisAlignment.start,
-    //             children: <Widget>[
-    //               Text(
-    //                 "2021",
-    //                 style: TextStyle(color: Colors.white, fontSize: 16),
-    //               ),
-    //               Text(
-    //                 "The Movie".toUpperCase(),
-    //                 maxLines: 1,
-    //                 overflow: TextOverflow.ellipsis,
-    //                 style: TextStyle(
-    //                   color: Colors.white,
-    //                   fontSize: 16,
-    //                 ),
-    //               )
-    //             ],
-    //           ),
-    //         )
-    //       ],
-    //     ),
-    //   );
-    // }
   }
 }
