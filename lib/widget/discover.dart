@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movieapp/base/base_state.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
 import 'package:movieapp/screens/home/home_bloc.dart';
+import 'package:movieapp/widget/button_common.dart';
 import 'package:movieapp/widget/movie_item.dart';
 import 'package:provider/provider.dart';
 
@@ -27,7 +30,7 @@ class _DiscoverWidgetState extends State<DiscoverWidget> {
     return Container(
       child: Column(
         children: <Widget>[
-          _buildHeaderDiscover(context),
+          ButtonCustomWidget(title: "Discover", onClick: _onNavigatorScreen),
           SizedBox(
             height: 4.0,
           ),
@@ -51,7 +54,11 @@ class _DiscoverWidgetState extends State<DiscoverWidget> {
     );
   }
 
-  Container _buildMovieItem(List<Movie> movies) {
+  void _onNavigatorScreen() {
+    log("Discover");
+  }
+
+  Widget _buildMovieItem(List<Movie> movies) {
     return Container(
       height: MediaQuery.of(context).size.height / 3,
       padding: EdgeInsets.only(left: 10.0),
@@ -67,26 +74,6 @@ class _DiscoverWidgetState extends State<DiscoverWidget> {
               child: MovieItem(movie: movies[index]),
             );
           }),
-    );
-  }
-
-  Widget _buildHeaderDiscover(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text("Discover",
-              style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                    fontWeight: FontWeight.bold,
-                  )),
-          FaIcon(
-            FontAwesomeIcons.arrowRight,
-            size: 20,
-            color: Colors.black.withOpacity(0.8),
-          )
-        ],
-      ),
     );
   }
 }

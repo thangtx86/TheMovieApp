@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/data/remote/model/categories.dart';
-import 'package:movieapp/utils/constans.dart';
+import 'package:movieapp/utils/utils.dart';
 
 class TabbarCategoriesWidget extends StatefulWidget {
   final Function(Category) onCategoryChange;
@@ -42,7 +42,6 @@ class _TabbarCategoriesWidgetState extends State<TabbarCategoriesWidget> {
               widget.onCategoryChange(listCategory[index]);
             }
           });
-          print("on Tab");
         },
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

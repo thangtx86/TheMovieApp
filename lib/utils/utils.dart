@@ -1,10 +1,9 @@
 import 'dart:developer';
 
 void logInfo(String tag, String message) {
-  log("$tag - INFOR : $message", name: "INFOR");
+  log("${tag.toUpperCase()} - INFOR : $message", name: "INFOR");
 }
 
 void logError(String tag, String message) {
-  log("$tag - ERROR : $message");
-  log("$tag", name: "ERROR", error: message);
+  log("${tag.toUpperCase()}", name: "ERROR", error: message);
 }

@@ -1,11 +1,13 @@
+import 'dart:developer';
+
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movieapp/base/base_state.dart';
+import 'package:movieapp/router/router_config.dart';
 import 'package:movieapp/screens/home/home_bloc.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
-
+import 'package:movieapp/widget/button_common.dart';
 import 'package:movieapp/widget/error_loading.dart';
 import 'package:movieapp/widget/widget_common/dialog_widget.dart';
 import 'package:provider/provider.dart';
@@ -22,11 +24,11 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
 
   double pageOffset = 0;
 
-  late HomeBloc _movieListBloc;
+  late HomeBloc _homeBloc;
 
   @override
   void initState() {
-    _movieListBloc = context.read<HomeBloc>();
+    _homeBloc = context.read<HomeBloc>();
     super.initState();
 
     pageController =
@@ -49,7 +51,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
     return Container(
       height: (MediaQuery.of(context).size.height / 1.6),
       child: StreamBuilder<BaseState>(
-          stream: _movieListBloc.moviesByCategory,
+          stream: _homeBloc.moviesByCategory,
           builder: (context, AsyncSnapshot<BaseState> snapshot) {
             if (snapshot.hasData) {
               BaseState state = snapshot.data!;
@@ -75,22 +77,9 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
           SizedBox(
             height: 15.0,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text("View All",
-                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                          fontWeight: FontWeight.w600,
-                        )),
-                FaIcon(
-                  FontAwesomeIcons.arrowRight,
-                  size: 20,
-                  color: Colors.black.withOpacity(0.8),
-                )
-              ],
-            ),
+          ButtonCustomWidget(
+            title: "View All",
+            onClick: onNavigatorScreen,
           ),
           Flexible(child: _buildSliderWidget(movies, size))
         ],
@@ -98,6 +87,13 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
     } else {
       return Container();
     }
+  }
+
+  void onNavigatorScreen() {
+    log("OBLCIK");
+    print("KKSKKSKSKSKKS");
+    Navigator.pushNamed(context, RouteConfig.SHOW_ALL,
+        arguments: _homeBloc.currentCategory);
   }
 
   Widget _buildSliderWidget(List<Movie> movies, Size size) {
@@ -187,3 +183,6 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
         });
   }
 }
+// Navigator.pushNamed(context, RouteConfig.ROUTE_SHOW_ALL,
+//                   arguments: TypeShowAll<Category>(
+//                       Type.CATEGORY, _homeBloc.currentCategory));

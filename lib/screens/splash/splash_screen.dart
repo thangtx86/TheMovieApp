@@ -45,29 +45,15 @@ class _SplashWidgetState extends State<_SplashWidget> {
   Widget build(BuildContext context) {
     return Container(
       color: Color(0xFF243142),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Hero(
-            tag: "logo",
-            child: Image.asset(
-              'assets/images/1.jpg',
-              width: MediaQuery.of(context).size.width / 3 * 2,
-            ),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Text(
-            "Welcome",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              decoration: TextDecoration.none,
-            ),
-          )
-        ],
-      ),
+      child: Center(
+          child: Text(
+        "Movie App",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 22,
+          decoration: TextDecoration.none,
+        ),
+      )),
     );
   }
 }

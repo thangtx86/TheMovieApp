@@ -41,29 +41,30 @@ class _HomeWidgetState extends State<HomeWidget> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-      elevation: 0.0,
-      backgroundColor: Colors.white,
-      leading: Icon(
-        EvaIcons.menu2Outline,
-        color: Colors.black,
+        elevation: 0.0,
+        backgroundColor: Colors.white,
+        leading: Icon(
+          EvaIcons.menu2Outline,
+          color: Colors.black,
+        ),
+        actions: <Widget>[
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                EvaIcons.searchOutline,
+                color: Colors.black,
+              ))
+        ],
       ),
-      actions: <Widget>[
-        IconButton(
-            onPressed: () {},
-            icon: Icon(
-              EvaIcons.searchOutline,
-              color: Colors.black,
-            ))
-      ],
-    ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             TabbarCategoriesWidget(
-              onCategoryChange: (categories) =>
-                  {_movieListBloc.onChangeCategory(categories)},
+              onCategoryChange: (categories) => {
+                _movieListBloc.onChangeCategory(categories),
+              },
             ),
             SizedBox(
               height: 5,
@@ -85,5 +86,4 @@ class _HomeWidgetState extends State<HomeWidget> {
       ),
     );
   }
-
 }
