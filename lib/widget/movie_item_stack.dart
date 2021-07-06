@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
 import 'package:movieapp/extensions/extensions.dart';
+import 'package:movieapp/utils/constans.dart';
 
 class MovieItemStack extends StatelessWidget {
   const MovieItemStack({Key? key, required this.movie}) : super(key: key);
@@ -20,8 +21,7 @@ class MovieItemStack extends StatelessWidget {
               ),
               shape: BoxShape.rectangle,
               image: DecorationImage(
-                  image: NetworkImage(
-                      "https://image.tmdb.org/t/p/w200/" + movie.backdropPath!),
+                  image: NetworkImage(IMAGE_PATH_SMALL + movie.backdropPath!),
                   fit: BoxFit.cover),
             ),
           ),

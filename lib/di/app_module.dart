@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:movieapp/screens/detail/movie_detail_bloc.dart';
 
 import 'package:movieapp/screens/home/home_bloc.dart';
 import 'package:movieapp/screens/movie_list/movie_list_bloc.dart';
@@ -41,4 +42,6 @@ void provideBlocModule() {
 
   locator.registerFactory<MovieListBloc>(
       () => MovieListBloc(locator<IMovieRespository>()));
+  locator.registerFactory<MovieDetailBloc>(
+      () => MovieDetailBloc(locator<IMovieRespository>()));
 }

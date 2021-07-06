@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
+import 'package:movieapp/utils/constans.dart';
 
 class MovieItem extends StatelessWidget {
   const MovieItem({Key? key, required this.movie}) : super(key: key);
@@ -26,8 +27,7 @@ class MovieItem extends StatelessWidget {
                 ),
                 shape: BoxShape.rectangle,
                 image: DecorationImage(
-                    image: NetworkImage(
-                        "https://image.tmdb.org/t/p/w200/" + movie.posterPath!),
+                    image: NetworkImage(IMAGE_PATH_SMALL + movie.posterPath!),
                     fit: BoxFit.cover),
               ),
             ),

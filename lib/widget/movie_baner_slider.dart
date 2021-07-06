@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -7,6 +5,7 @@ import 'package:movieapp/base/base_state.dart';
 import 'package:movieapp/router/router_config.dart';
 import 'package:movieapp/screens/home/home_bloc.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
+import 'package:movieapp/utils/constans.dart';
 import 'package:movieapp/widget/button_common.dart';
 import 'package:movieapp/widget/error_loading.dart';
 import 'package:movieapp/widget/widget_common/dialog_widget.dart';
@@ -90,8 +89,6 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
   }
 
   void onNavigatorScreen() {
-    log("OBLCIK");
-    print("KKSKKSKSKSKKS");
     Navigator.pushNamed(context, RouteConfig.SHOW_ALL,
         arguments: _homeBloc.currentCategory);
   }
@@ -121,8 +118,8 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
                       shape: BoxShape.rectangle,
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: NetworkImage("https://image.tmdb.org/t/p/w500/" +
-                            movies[index].posterPath!),
+                        image: NetworkImage(
+                            IMAGE_PATH_LARGE + movies[index].posterPath!),
                       ),
                     ),
                   ),
