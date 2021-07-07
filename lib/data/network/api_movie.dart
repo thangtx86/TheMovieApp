@@ -2,7 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:movieapp/data/network/api_impl.dart';
 import 'package:movieapp/data/remote/model/categories.dart';
 import 'package:movieapp/data/remote/model/genre_response.dart';
+import 'package:movieapp/data/remote/model/movie.dart';
+import 'package:movieapp/data/remote/model/movie_detail_response.dart';
 import 'package:movieapp/data/remote/model/movie_list_response.dart';
+import 'package:movieapp/utils/utils.dart';
 
 class ApiMovie implements ApiImpl {
   Dio _dio;
@@ -63,6 +66,24 @@ class ApiMovie implements ApiImpl {
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
       return MoviesResponse.error("$error");
+    }
+  }
+
+  @override
+  Future<MovieDetailResponse> fetchMovieDetail(int id) async {
+    final movieDetail = '$_BASE_URL/movie/${id}';
+
+    var params = {
+      "api_key": _API_KEY,
+      "language": "en-US",
+    };
+    try {
+      var response = await _dio.get(movieDetail, queryParameters: params);
+      return MovieDetailResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      logError("fetch-detail-movie", "${error} --- ${stacktrace}");
+      // print("Exception occured: $error stackTrace: $stacktrace");
+      return MovieDetailResponse.error("$error");
     }
   }
 }

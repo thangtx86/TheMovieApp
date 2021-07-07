@@ -1,6 +1,8 @@
 import 'package:movieapp/data/network/api_impl.dart';
 import 'package:movieapp/data/remote/model/categories.dart';
 import 'package:movieapp/data/remote/model/genre_response.dart';
+import 'package:movieapp/data/remote/model/movie.dart';
+import 'package:movieapp/data/remote/model/movie_detail_response.dart';
 import 'package:movieapp/data/remote/model/movie_list_response.dart';
 import 'package:movieapp/data/remote/respository/imovie_respository.dart';
 
@@ -23,5 +25,10 @@ class MovieRespository implements IMovieRespository {
   @override
   Future<MoviesResponse> fetchDiscoverMovie(int page) {
     return _apiImpl.fetchDicoverMovie(page);
+  }
+
+  @override
+  Future<MovieDetailResponse> fetchMovieDetail(int id) {
+    return _apiImpl.fetchMovieDetail(id);
   }
 }

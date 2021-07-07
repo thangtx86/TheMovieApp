@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:movieapp/data/remote/model/movie.dart';
+import 'package:movieapp/data/remote/model/movie_detail_response.dart';
 import 'package:movieapp/utils/constans.dart';
 import 'package:movieapp/utils/dimens.dart';
 
 class HeaderMovieDetail extends StatelessWidget {
-  const HeaderMovieDetail({Key? key}) : super(key: key);
+  const HeaderMovieDetail({Key? key, required this.movie}) : super(key: key);
+  final MovieDetailResponse movie;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,9 @@ class HeaderMovieDetail extends StatelessWidget {
           height: size.height * 0.35 - 42,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(IMAGE_DUMMY), fit: BoxFit.cover),
+                  image:
+                      NetworkImage(IMAGE_PATH_LARGE + (movie.posterPath ?? "")),
+                  fit: BoxFit.cover),
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(m30Size),
                   bottomRight: Radius.circular(m30Size))),
@@ -60,7 +65,7 @@ class HeaderMovieDetail extends StatelessWidget {
                       SvgPicture.asset("assets/images/ic_start.svg"),
                       SizedBox(height: m10Size),
                       Text(
-                        "8.2/10",
+                        "${movie.voteAverage} /10",
                         style:
                             TextStyle(color: Colors.black, fontSize: m16Size),
                       ),
@@ -71,20 +76,17 @@ class HeaderMovieDetail extends StatelessWidget {
                     ],
                   ),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
+                      SizedBox(height: m9Size),
                       SvgPicture.asset("assets/images/ic_star_grey.svg"),
                       SizedBox(height: m10Size),
                       Text(
-                        "8.2/10",
-                        style:
-                            TextStyle(color: Colors.black, fontSize: m16Size),
-                      ),
-                      SizedBox(height: m4Size),
-                      Text(
-                        "123,323",
+                        "Rate This",
                         style: TextStyle(
-                            color: Color(0xFF9A9BB2), fontSize: m12Size),
+                            color: Colors.black,
+                            fontSize: m16Size,
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),

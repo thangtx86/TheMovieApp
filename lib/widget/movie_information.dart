@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:movieapp/data/remote/model/movie_detail_response.dart';
 import 'package:movieapp/utils/dimens.dart';
+import 'package:movieapp/extensions/extensions.dart';
 
 class MovieInformationWidget extends StatelessWidget {
-  const MovieInformationWidget({Key? key}) : super(key: key);
+  const MovieInformationWidget({Key? key, required this.movie})
+      : super(key: key);
+  final MovieDetailResponse movie;
 
   @override
   Widget build(BuildContext context) {
+    List<Genres> genres = movie.genres!;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: m25Size),
       child: Column(
@@ -15,7 +20,19 @@ class MovieInformationWidget extends StatelessWidget {
           SizedBox(
             height: m15Size,
           ),
-          _buildDumyGenre(),
+          Container(
+            height: 45,
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return _buildmGenreItem(genres[index]);
+              },
+              padding: EdgeInsets.only(bottom: m1Size),
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
+              itemCount: genres.length,
+              scrollDirection: Axis.horizontal,
+            ),
+          ),
         ],
       ),
     );
@@ -24,15 +41,11 @@ class MovieInformationWidget extends StatelessWidget {
   Widget _buildDumyGenre() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        _buildmGenreItem(),
-        _buildmGenreItem(),
-        _buildmGenreItem(),
-      ],
+      children: <Widget>[],
     );
   }
 
-  Widget _buildmGenreItem() {
+  Widget _buildmGenreItem(Genres genre) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: m6Size),
       decoration: BoxDecoration(
@@ -49,7 +62,7 @@ class MovieInformationWidget extends StatelessWidget {
           primary: Colors.white,
         ),
         child: Text(
-          "Active",
+          "${genre.name}",
           style: TextStyle(fontSize: m14Size),
         ),
       ),
@@ -66,7 +79,7 @@ class MovieInformationWidget extends StatelessWidget {
             children: <Widget>[
               Container(
                 child: Text(
-                  "Ford v Ferrari",
+                  "${movie.title}",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -83,7 +96,7 @@ class MovieInformationWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      "2019",
+                      "${movie.releaseDate?.getYear()}",
                       style: TextStyle(
                           color: Color(0xFF9A9BB2), fontSize: m14Size),
                     ),
@@ -99,7 +112,7 @@ class MovieInformationWidget extends StatelessWidget {
                       width: m30Size,
                     ),
                     Text(
-                      "2h 32 min",
+                      "${movie.runtime?.convertIntToTimes()}",
                       style: TextStyle(
                           color: Color(0xFF9A9BB2), fontSize: m14Size),
                     )
