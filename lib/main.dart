@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/di/app_module.dart';
 import 'package:movieapp/router/router_config.dart';
-import 'package:movieapp/screens/splash/splash_screen.dart';
-import 'package:movieapp/utils/constans.dart';
+
+import 'package:movieapp/utils/color.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,9 +42,9 @@ ThemeData _buildMovieTheme() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
     colorScheme: base.colorScheme.copyWith(
-      primary: mainColor,
-      onPrimary: mainColor,
-      secondary: mainColor,
+      primary: mMainColor,
+      onPrimary: mMainColor,
+      secondary: mMainColor,
     ),
     appBarTheme: base.appBarTheme.copyWith(
       backwardsCompatibility: false,

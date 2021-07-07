@@ -26,7 +26,7 @@ class ErrorLoading extends StatelessWidget {
             size: (height ?? 0) / 3,
           ),
           SizedBox(
-            height: 8,
+            height: 8.0,
           ),
           Text(
             message ?? "",

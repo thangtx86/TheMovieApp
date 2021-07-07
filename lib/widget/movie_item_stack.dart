@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
 import 'package:movieapp/extensions/extensions.dart';
 import 'package:movieapp/utils/constans.dart';
+import 'package:movieapp/utils/dimens.dart';
 
 class MovieItemStack extends StatelessWidget {
   const MovieItemStack({Key? key, required this.movie}) : super(key: key);
@@ -11,13 +12,13 @@ class MovieItemStack extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(top: 10.0, bottom: 10.0, right: 16.0),
+      padding: EdgeInsets.only(top: m10Size, bottom: m10Size, right: m16Size),
       child: Stack(
         children: [
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
-                Radius.circular(12.0),
+                Radius.circular(m12Size),
               ),
               shape: BoxShape.rectangle,
               image: DecorationImage(
@@ -26,12 +27,12 @@ class MovieItemStack extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 10,
-            right: 10,
+            top: m10Size,
+            right: m10Size,
             child: Container(
               alignment: Alignment.center,
-              width: 45.0,
-              height: 45.0,
+              width: m45Size,
+              height: m45Size,
               decoration: BoxDecoration(
                 color: Colors.white,
                 gradient: LinearGradient(
@@ -55,7 +56,7 @@ class MovieItemStack extends StatelessWidget {
               children: <Widget>[
                 Text(
                   movie.releaseDate?.getYear() ?? "",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                  style: TextStyle(color: Colors.white, fontSize: m16Size),
                 ),
                 Text(
                   movie.title?.toUpperCase() ?? "",
@@ -63,7 +64,7 @@ class MovieItemStack extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: m16Size,
                   ),
                 )
               ],

@@ -1,4 +1,3 @@
-import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movieapp/base/base_bloc_provider.dart';
@@ -94,7 +93,6 @@ class _MovieListWidgetState extends State<MovieListWidget> {
   }
 
   Widget _buildItemMovie(BaseState state) {
-    Size size = MediaQuery.of(context).size;
     if (state is StateLoading) {
       return LoadingProgressBar();
     } else if (state is StateLoaded<List<Movie?>>) {

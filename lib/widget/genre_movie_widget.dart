@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movieapp/base/base_state.dart';
 import 'package:movieapp/data/remote/model/genre.dart';
 import 'package:movieapp/screens/home/home_bloc.dart';
+import 'package:movieapp/utils/dimens.dart';
 import 'package:provider/provider.dart';
 
 class GenreMovieWidget extends StatelessWidget {
@@ -14,10 +15,10 @@ class GenreMovieWidget extends StatelessWidget {
           if (snapshot.hasData && state is StateLoaded<List<Genre>>) {
             List<Genre> genres = state.value;
             return Container(
-              margin: EdgeInsets.symmetric(vertical: 4),
-              height: 40,
+              margin: EdgeInsets.symmetric(vertical: m4Size),
+              height: m40Size,
               child: ListView.builder(
-                  padding: EdgeInsets.only(left: 16, bottom: 1),
+                  padding: EdgeInsets.only(left: m16Size, bottom: m1Size),
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
                   itemCount: genres.length,
@@ -31,29 +32,28 @@ class GenreMovieWidget extends StatelessWidget {
               child: Text('Nhu cco'),
             );
           }
-        }
-        );
+        });
   }
 
   Widget _buildItemGenre(Genre genre) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 6),
+      margin: EdgeInsets.symmetric(horizontal: m6Size),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(m20Size),
       ),
       child: ElevatedButton(
         onPressed: () => {},
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(m20Size),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+          padding: EdgeInsets.symmetric(horizontal: m30Size, vertical: m8Size),
           side: BorderSide(color: Colors.grey.withOpacity(0.3)),
           primary: Colors.white,
         ),
         child: Text(
           genre.name ?? "",
-          style: TextStyle(fontSize: 14),
+          style: TextStyle(fontSize: m14Size),
         ),
       ),
     );

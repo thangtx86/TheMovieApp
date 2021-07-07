@@ -2,7 +2,7 @@ import 'package:movieapp/base/base_bloc.dart';
 import 'package:movieapp/base/base_state.dart';
 import 'package:movieapp/data/remote/model/categories.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
-import 'package:movieapp/data/remote/model/movie_list_response.dart';
+
 import 'package:movieapp/data/remote/respository/imovie_respository.dart';
 import 'package:movieapp/utils/utils.dart';
 import 'package:rxdart/subjects.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/data/remote/model/categories.dart';
-import 'package:movieapp/utils/utils.dart';
+import 'package:movieapp/utils/dimens.dart';
 
 class TabbarCategoriesWidget extends StatefulWidget {
   final Function(Category) onCategoryChange;
@@ -17,8 +17,8 @@ class _TabbarCategoriesWidgetState extends State<TabbarCategoriesWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0),
-      height: 60,
+      margin: EdgeInsets.symmetric(vertical: m10Size),
+      height: m60Size,
       child: ListView.builder(
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
@@ -33,7 +33,7 @@ class _TabbarCategoriesWidgetState extends State<TabbarCategoriesWidget> {
 
   Widget _buildItemTabBar(BuildContext context, int index) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: m20Size),
       child: GestureDetector(
         onTap: () {
           setState(() {
@@ -56,11 +56,11 @@ class _TabbarCategoriesWidgetState extends State<TabbarCategoriesWidget> {
                       : Colors.black.withOpacity(0.4)),
             ),
             Container(
-              margin: EdgeInsets.only(top: 10.0),
-              height: 6,
-              width: 65,
+              margin: EdgeInsets.only(top: m10Size),
+              height: m6Size,
+              width: m65Size,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(m10Size),
                 color: index == _positionSelectTab
                     ? Colors.red
                     : Colors.transparent,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:movieapp/utils/utils.dart';
+import 'package:movieapp/utils/dimens.dart';
 
 class ButtonCustomWidget extends StatelessWidget {
   const ButtonCustomWidget(
@@ -14,7 +14,7 @@ class ButtonCustomWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+        padding: const EdgeInsets.symmetric(horizontal: m18Size),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -39,7 +39,7 @@ class ButtonCustomWidget extends StatelessWidget {
                 },
                 child: FaIcon(
                   FontAwesomeIcons.arrowRight,
-                  size: 20,
+                  size: m20Size,
                   color: Colors.black.withOpacity(0.8),
                 ),
                 style: ElevatedButton.styleFrom(

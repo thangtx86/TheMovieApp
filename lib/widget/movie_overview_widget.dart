@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/utils/constans.dart';
+import 'package:movieapp/utils/dimens.dart';
 
 class MovieOverviewWidget extends StatelessWidget {
   const MovieOverviewWidget({Key? key}) : super(key: key);
@@ -7,17 +8,17 @@ class MovieOverviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 25),
+      padding: EdgeInsets.symmetric(horizontal: m25Size),
       alignment: Alignment.centerLeft,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             "Plot Summary",
-            style: TextStyle(fontSize: 20.0),
+            style: TextStyle(fontSize: m20Size),
           ),
           SizedBox(
-            height: 20.0,
+            height: m20Size,
           ),
           Text(
             "$dumy_string",

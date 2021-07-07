@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:movieapp/base/base_bloc_provider.dart';
 import 'package:movieapp/di/app_module.dart';
 import 'package:movieapp/screens/detail/movie_detail_bloc.dart';
-import 'package:movieapp/utils/constans.dart';
+
 import 'package:movieapp/widget/cast_crew_widget.dart';
 import 'package:movieapp/widget/header_movie_detail.dart';
 import 'package:movieapp/widget/movie_information.dart';

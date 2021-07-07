@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:movieapp/utils/dimens.dart';
 
 class MovieInformationWidget extends StatelessWidget {
   const MovieInformationWidget({Key? key}) : super(key: key);
@@ -7,12 +8,12 @@ class MovieInformationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 25),
+      padding: EdgeInsets.symmetric(horizontal: m25Size),
       child: Column(
         children: <Widget>[
           _buildMovieInfo(),
           SizedBox(
-            height: 15.0,
+            height: m15Size,
           ),
           _buildDumyGenre(),
         ],
@@ -33,23 +34,23 @@ class MovieInformationWidget extends StatelessWidget {
 
   Widget _buildmGenreItem() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 6),
+      margin: EdgeInsets.symmetric(horizontal: m6Size),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(m20Size),
       ),
       child: ElevatedButton(
         onPressed: () => {},
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(m20Size),
           ),
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+          padding: EdgeInsets.symmetric(horizontal: m30Size, vertical: m8Size),
           side: BorderSide(color: Colors.grey.withOpacity(0.3)),
           primary: Colors.white,
         ),
         child: Text(
           "Active",
-          style: TextStyle(fontSize: 14),
+          style: TextStyle(fontSize: m14Size),
         ),
       ),
     );
@@ -71,11 +72,11 @@ class MovieInformationWidget extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 30),
+                      fontSize: m30Size),
                 ),
               ),
               SizedBox(
-                height: 10.0,
+                height: m10Size,
               ),
               Container(
                 child: Row(
@@ -83,21 +84,24 @@ class MovieInformationWidget extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       "2019",
-                      style: TextStyle(color: Color(0xFF9A9BB2), fontSize: 14),
+                      style: TextStyle(
+                          color: Color(0xFF9A9BB2), fontSize: m14Size),
                     ),
                     SizedBox(
-                      width: 30.0,
+                      width: m30Size,
                     ),
                     Text(
                       "PG-13",
-                      style: TextStyle(color: Color(0xFF9A9BB2), fontSize: 14),
+                      style: TextStyle(
+                          color: Color(0xFF9A9BB2), fontSize: m14Size),
                     ),
                     SizedBox(
-                      width: 30.0,
+                      width: m30Size,
                     ),
                     Text(
                       "2h 32 min",
-                      style: TextStyle(color: Color(0xFF9A9BB2), fontSize: 14),
+                      style: TextStyle(
+                          color: Color(0xFF9A9BB2), fontSize: m14Size),
                     )
                   ],
                 ),
@@ -106,18 +110,18 @@ class MovieInformationWidget extends StatelessWidget {
           ),
         ),
         Container(
-          width: 64,
-          height: 64,
+          width: m64Size,
+          height: m64Size,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: Color(0xFFFE6D8E),
             borderRadius: BorderRadius.all(
-              Radius.circular(20),
+              Radius.circular(m20Size),
             ),
           ),
           child: FaIcon(
             Icons.add,
-            size: 30,
+            size: m30Size,
             color: Colors.white,
           ),
         )

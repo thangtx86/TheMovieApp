@@ -16,7 +16,7 @@ class ApiMovie implements ApiImpl {
   Future<MoviesResponse> fetchMovieByCategory(
       Category category, int page) async {
     final movieByCategory = '$_BASE_URL/movie/${category.query}';
-    var params = {
+    final params = {
       "api_key": _API_KEY,
       "language": "en-US",
       "page": page,

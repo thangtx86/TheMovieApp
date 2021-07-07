@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
 import 'package:movieapp/utils/constans.dart';
-import 'package:movieapp/utils/utils.dart';
+import 'package:movieapp/utils/dimens.dart';
 
 class MovieItem extends StatelessWidget {
   final Function(Movie) onItemClick;
@@ -40,7 +40,7 @@ class MovieItem extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 4.0,
+              height: m4Size,
             ),
             Container(
               width: size.width / 3,
@@ -51,12 +51,12 @@ class MovieItem extends StatelessWidget {
                 style: TextStyle(
                   height: 1.2,
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: m18Size,
                 ),
               ),
             ),
             SizedBox(
-              height: 5.0,
+              height: m5Size,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

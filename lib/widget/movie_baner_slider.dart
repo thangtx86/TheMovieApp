@@ -6,6 +6,7 @@ import 'package:movieapp/router/router_config.dart';
 import 'package:movieapp/screens/home/home_bloc.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
 import 'package:movieapp/utils/constans.dart';
+import 'package:movieapp/utils/dimens.dart';
 import 'package:movieapp/widget/button_common.dart';
 import 'package:movieapp/widget/error_loading.dart';
 import 'package:movieapp/widget/widget_common/dialog_widget.dart';
@@ -58,7 +59,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
             } else {
               return ErrorLoading(
                 message: "Fetch data not handle..",
-                height: 150,
+                height: m150Size,
               );
             }
           }),
@@ -74,7 +75,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
       return Column(
         children: <Widget>[
           SizedBox(
-            height: 15.0,
+            height: m15Size,
           ),
           ButtonCustomWidget(
             title: "View All",
@@ -101,19 +102,19 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
           return Container(
             width: size.width,
             padding: EdgeInsets.only(
-              right: 20,
-              left: 20,
-              top: 30,
-              bottom: 20,
+              right: m20Size,
+              left: m20Size,
+              top: m30Size,
+              bottom: m20Size,
             ),
             child: Column(
               children: <Widget>[
                 Flexible(
                   child: Container(
-                    height: 450,
+                    height: m450Size,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(
-                        Radius.circular(50.0),
+                        Radius.circular(m50Size),
                       ),
                       shape: BoxShape.rectangle,
                       image: DecorationImage(
@@ -124,11 +125,11 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: m10Size),
                 Container(
                   alignment: Alignment.center,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: m16Size),
                     child: Text(
                       movies[index].title ?? "",
                       maxLines: 1,
@@ -136,18 +137,18 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
                       style: TextStyle(
                           height: 1.4,
                           color: Colors.black,
-                          fontSize: 28.0,
+                          fontSize: m28Size,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
-                SizedBox(height: 12.0),
+                SizedBox(height: m12Size),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     RatingBar.builder(
-                      itemSize: 16.0,
+                      itemSize: m16Size,
                       initialRating: (movies[index].voteAverage ?? 0) / 2,
                       minRating: 1,
                       direction: Axis.horizontal,
@@ -169,7 +170,7 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
                       movies[index].voteAverage.toString(),
                       style: TextStyle(
                           color: Colors.black,
-                          fontSize: 16.0,
+                          fontSize: m16Size,
                           fontWeight: FontWeight.normal),
                     ),
                   ],
@@ -180,6 +181,3 @@ class _MovieViewPagerWidgetState extends State<MovieViewPagerWidget> {
         });
   }
 }
-// Navigator.pushNamed(context, RouteConfig.ROUTE_SHOW_ALL,
-//                   arguments: TypeShowAll<Category>(
-//                       Type.CATEGORY, _homeBloc.currentCategory));
