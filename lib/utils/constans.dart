@@ -13,3 +13,7 @@ const titleColor = Color(0xFF5a606b);
 
 const String IMAGE_PATH_LARGE = "https://image.tmdb.org/t/p/w500/";
 const String IMAGE_PATH_SMALL = "https://image.tmdb.org/t/p/w200/";
+const String IMAGE_DUMMY =
+    "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg";
+const String dumy_string =
+    "American car designer Carroll Shelby and driver Kn Miles battle corporate interference and the laws of physics to build a revolutionary race car for Ford in order.";

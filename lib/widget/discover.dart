@@ -9,7 +9,8 @@ import 'package:movieapp/widget/movie_item.dart';
 import 'package:provider/provider.dart';
 
 class DiscoverWidget extends StatefulWidget {
-  const DiscoverWidget({Key? key}) : super(key: key);
+  final Function(Movie) onItemClick;
+  const DiscoverWidget({Key? key, required this.onItemClick}) : super(key: key);
 
   @override
   _DiscoverWidgetState createState() => _DiscoverWidgetState();
@@ -74,7 +75,14 @@ class _DiscoverWidgetState extends State<DiscoverWidget> {
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.only(top: 10.0, bottom: 10.0, right: 15.0),
-              child: MovieItem(movie: movies[index]),
+              child: MovieItem(
+                movie: movies[index],
+                onItemClick: (movie) {
+                  Navigator.pushNamed(context, RouteConfig.DETAIL,
+                      arguments: movie.id);
+                  logInfo("MOVIE detail: ++: ", movie.title.toString());
+                },
+              ),
             );
           }),
     );

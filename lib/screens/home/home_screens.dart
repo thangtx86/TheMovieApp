@@ -77,7 +77,9 @@ class _HomeWidgetState extends State<HomeWidget> {
             SizedBox(
               height: 10,
             ),
-            DiscoverWidget(),
+            DiscoverWidget(
+              onItemClick: (movie) => {},
+            ),
             SizedBox(
               height: 10,
             ),
