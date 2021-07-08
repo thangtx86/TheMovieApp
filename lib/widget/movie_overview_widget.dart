@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/data/remote/model/movie_detail_response.dart';
-import 'package:movieapp/utils/constans.dart';
 import 'package:movieapp/utils/dimens.dart';
 
 class MovieOverviewWidget extends StatelessWidget {

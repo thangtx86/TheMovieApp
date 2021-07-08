@@ -29,9 +29,12 @@ class HomeBloc extends BaseBloc {
       BehaviorSubject.seeded(listCategory[0]);
 
   BehaviorSubject<BaseState> _genresSubject = BehaviorSubject<BaseState>();
+  
+  
 
   BehaviorSubject<BaseState> _movieDiscoverSubject =
       BehaviorSubject<BaseState>();
+
 
   //stream
   Stream<BaseState> get moviesByCategory => _movieByCategorySubject.stream;
@@ -41,6 +44,8 @@ class HomeBloc extends BaseBloc {
   Stream<BaseState> get genresListStream => _genresSubject.stream;
 
   Stream<BaseState> get moviesDiscover => _movieDiscoverSubject.stream;
+
+  
 
   Future requestMovieByCategories(Category category, int page) async {
     _movieByCategorySubject.add(StateLoading());

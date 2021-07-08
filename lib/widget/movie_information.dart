@@ -38,13 +38,6 @@ class MovieInformationWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildDumyGenre() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[],
-    );
-  }
-
   Widget _buildmGenreItem(Genres genre) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: m6Size),

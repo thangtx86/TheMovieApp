@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:movieapp/data/remote/model/movie.dart';
 import 'package:movieapp/data/remote/model/movie_detail_response.dart';
 import 'package:movieapp/utils/constans.dart';
 import 'package:movieapp/utils/dimens.dart';
@@ -70,7 +69,7 @@ class HeaderMovieDetail extends StatelessWidget {
                             TextStyle(color: Colors.black, fontSize: m16Size),
                       ),
                       SizedBox(height: m4Size),
-                      Text("123,323",
+                      Text("${movie.voteCount}",
                           style: TextStyle(
                               color: Color(0xFF9A9BB2), fontSize: m12Size)),
                     ],

@@ -44,7 +44,7 @@ class _DiscoverWidgetState extends State<DiscoverWidget> {
                     List<Movie> movies = state.value;
                     return _buildMovieItem(movies);
                   } else {
-                    //TODO: Handle view
+                    //TODO: Handle view s
                     return Container();
                   }
                 } else {

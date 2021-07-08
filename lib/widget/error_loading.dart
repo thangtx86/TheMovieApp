@@ -39,12 +39,19 @@ class ErrorLoading extends StatelessWidget {
           SizedBox(
             height: 4,
           ),
-          FlatButton(
-              color: Colors.white10,
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Colors.white10,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16)),
-              onPressed: () {},
-              child: Text("Retry", style: TextStyle(color: Colors.white))),
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+            onPressed: () {},
+            child: Text(
+              "Retry",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
         ],
       ),
     );
