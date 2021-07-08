@@ -42,6 +42,7 @@ class _MovieDetailWidgetState extends State<MovieDetailWidget> {
   void initState() {
     _movieDetailBloc = context.read<MovieDetailBloc>();
     _movieDetailBloc.fetchMovieDetail(widget.movieId);
+    _movieDetailBloc.fetchCastCrew(widget.movieId);
     super.initState();
   }
 
@@ -67,24 +68,31 @@ class _MovieDetailWidgetState extends State<MovieDetailWidget> {
       return LoadingProgressBar();
     } else if (state is StateLoaded<MovieDetailResponse>) {
       MovieDetailResponse movie = state.value;
-      return Column(
-        children: <Widget>[
-          HeaderMovieDetail(
-            movie: movie,
-          ),
-          SizedBox(
-            height: 30.0,
-          ),
-          MovieInformationWidget(movie: movie),
-          SizedBox(
-            height: 40,
-          ),
-          MovieOverviewWidget(movie: movie),
-          SizedBox(
-            height: 30,
-          ),
-          CatCrewWidget(),
-        ],
+      return SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            HeaderMovieDetail(
+              movie: movie,
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            MovieInformationWidget(
+              title: movie.title ?? "",
+              releaseDate: movie.releaseDate ?? "",
+              runTime: movie.runtime ?? 0,
+              genres: movie.genres,
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            MovieOverviewWidget(movie: movie),
+            SizedBox(
+              height: 30,
+            ),
+            CatCrewWidget(),
+          ],
+        ),
       );
     } else {
       return Container();

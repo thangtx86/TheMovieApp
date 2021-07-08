@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:movieapp/data/network/api_impl.dart';
+import 'package:movieapp/data/remote/model/cast_crew_response.dart';
 import 'package:movieapp/data/remote/model/categories.dart';
 import 'package:movieapp/data/remote/model/genre_response.dart';
 import 'package:movieapp/data/remote/model/movie_detail_response.dart';
@@ -83,6 +84,24 @@ class ApiMovie implements ApiImpl {
       logError("fetch-detail-movie", "${error} --- ${stacktrace}");
       // print("Exception occured: $error stackTrace: $stacktrace");
       return MovieDetailResponse.error("$error");
+    }
+  }
+
+  @override
+  Future<CastCrewResponse> fetchCastCrew(int movieId) async {
+    final movieDetail = '$_BASE_URL/movie/${movieId}/credits';
+
+    var params = {
+      "api_key": _API_KEY,
+      "language": "en-US",
+    };
+    try {
+      var response = await _dio.get(movieDetail, queryParameters: params);
+      return CastCrewResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      logError("fetch-detail-movie", "${error} --- ${stacktrace}");
+      // print("Exception occured: $error stackTrace: $stacktrace");
+      return CastCrewResponse.error("$error");
     }
   }
 }

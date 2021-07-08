@@ -1,3 +1,4 @@
+import 'package:movieapp/data/remote/model/cast_crew_response.dart';
 import 'package:movieapp/data/remote/model/categories.dart';
 import 'package:movieapp/data/remote/model/genre_response.dart';
 import 'package:movieapp/data/remote/model/movie_detail_response.dart';
@@ -11,4 +12,6 @@ abstract class IMovieRespository {
   Future<MoviesResponse> fetchDiscoverMovie(int page);
 
   Future<MovieDetailResponse> fetchMovieDetail(int id);
+
+  Future<CastCrewResponse> fetchCastCrew(int movieId);
 }

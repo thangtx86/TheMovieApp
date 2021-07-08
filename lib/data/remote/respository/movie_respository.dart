@@ -1,4 +1,5 @@
 import 'package:movieapp/data/network/api_impl.dart';
+import 'package:movieapp/data/remote/model/cast_crew_response.dart';
 import 'package:movieapp/data/remote/model/categories.dart';
 import 'package:movieapp/data/remote/model/genre_response.dart';
 import 'package:movieapp/data/remote/model/movie_detail_response.dart';
@@ -12,22 +13,21 @@ class MovieRespository implements IMovieRespository {
 
   @override
   Future<MoviesResponse> fetchMovieByCategory(
-      Category category, int page) async {
-    return _apiImpl.fetchMovieByCategory(category, page);
-  }
+          Category category, int page) async =>
+      _apiImpl.fetchMovieByCategory(category, page);
 
   @override
-  Future<GenresRespone> fetchGenreMovie() {
-    return _apiImpl.fetchGenreMovie();
-  }
+  Future<GenresRespone> fetchGenreMovie() async => _apiImpl.fetchGenreMovie();
 
   @override
-  Future<MoviesResponse> fetchDiscoverMovie(int page) {
-    return _apiImpl.fetchDicoverMovie(page);
-  }
+  Future<MoviesResponse> fetchDiscoverMovie(int page) async =>
+      _apiImpl.fetchDicoverMovie(page);
 
   @override
-  Future<MovieDetailResponse> fetchMovieDetail(int id) {
-    return _apiImpl.fetchMovieDetail(id);
-  }
+  Future<MovieDetailResponse> fetchMovieDetail(int id) async =>
+      _apiImpl.fetchMovieDetail(id);
+
+  @override
+  Future<CastCrewResponse> fetchCastCrew(int movieId) async =>
+      _apiImpl.fetchCastCrew(movieId);
 }
