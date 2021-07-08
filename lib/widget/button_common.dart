@@ -14,7 +14,7 @@ class ButtonCustomWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: m18Size),
+        padding: const EdgeInsets.symmetric(horizontal: m8Size),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

@@ -32,7 +32,7 @@ class ErrorLoading extends StatelessWidget {
             message ?? "",
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: Colors.white70,
+                color: Colors.black,
                 fontSize: 14,
                 fontWeight: FontWeight.w400),
           ),

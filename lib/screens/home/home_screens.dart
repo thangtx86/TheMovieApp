@@ -4,6 +4,7 @@ import 'package:movieapp/base/base_bloc_provider.dart';
 import 'package:movieapp/screens/home/home_bloc.dart';
 import 'package:movieapp/di/app_module.dart';
 import 'package:movieapp/widget/discover.dart';
+import 'package:movieapp/widget/error_loading.dart';
 import 'package:movieapp/widget/genre_movie_widget.dart';
 import 'package:movieapp/widget/movie_baner_slider.dart';
 import 'package:movieapp/widget/tabbar_categories.dart';
@@ -27,6 +28,7 @@ class HomeWidget extends StatefulWidget {
 
 class _HomeWidgetState extends State<HomeWidget> {
   late HomeBloc _movieListBloc;
+  bool isShow = false;
 
   @override
   void initState() {
@@ -49,7 +51,11 @@ class _HomeWidgetState extends State<HomeWidget> {
         ),
         actions: <Widget>[
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  isShow = true;
+                });
+              },
               icon: Icon(
                 EvaIcons.searchOutline,
                 color: Colors.black,
