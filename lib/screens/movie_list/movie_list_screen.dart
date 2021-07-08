@@ -5,6 +5,7 @@ import 'package:movieapp/base/base_state.dart';
 import 'package:movieapp/data/remote/model/categories.dart';
 import 'package:movieapp/data/remote/model/movie.dart';
 import 'package:movieapp/di/app_module.dart';
+import 'package:movieapp/router/router_config.dart';
 import 'package:movieapp/screens/movie_list/movie_list_bloc.dart';
 import 'package:movieapp/utils/utils.dart';
 import 'package:movieapp/widget/movie_item_stack.dart';
@@ -103,7 +104,14 @@ class _MovieListWidgetState extends State<MovieListWidget> {
         itemCount: movies.length,
         controller: _controller,
         itemBuilder: (context, index) {
-          return MovieItemStack(movie: movies[index]!);
+          return MovieItemStack(
+            movie: movies[index]!,
+            onItemClick: (movie) {
+              Navigator.pushNamed(context, RouteConfig.DETAIL,
+                  arguments: movie.id);
+              logInfo("MOVIE detail: ++: ", movie.id.toString());
+            },
+          );
         },
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
