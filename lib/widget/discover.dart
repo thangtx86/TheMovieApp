@@ -82,7 +82,7 @@ class _DiscoverWidgetState extends State<DiscoverWidget> {
                 onItemClick: (movie) {
                   Navigator.pushNamed(context, RouteConfig.DETAIL,
                       arguments: movie.id);
-                  logInfo("MOVIE detail: ++: ", movie.title.toString());
+                  logInfo("MOVIE detail: ++: ", movie.id.toString());
                 },
               ),
             );

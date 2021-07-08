@@ -31,6 +31,7 @@ class MovieInformationWidget extends StatelessWidget {
           ),
           Container(
             height: 45,
+            alignment: Alignment.centerLeft,
             child: ListView.builder(
               itemBuilder: (context, index) {
                 return _buildmGenreItem(genres?[index]);

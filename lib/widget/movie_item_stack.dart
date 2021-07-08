@@ -22,7 +22,9 @@ class MovieItemStack extends StatelessWidget {
               ),
               shape: BoxShape.rectangle,
               image: DecorationImage(
-                  image: NetworkImage(IMAGE_PATH_SMALL + movie.backdropPath!),
+                  image: movie.backdropPath != null
+                      ? NetworkImage(IMAGE_PATH_SMALL + movie.backdropPath!)
+                      : AssetImage(IMAGE_PATH_DEFAULT) as ImageProvider,
                   fit: BoxFit.cover),
             ),
           ),

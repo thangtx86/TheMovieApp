@@ -46,7 +46,7 @@ class CatCrewWidget extends StatelessWidget {
         height: 180,
         child: ListView.builder(
           itemBuilder: (context, index) {
-            return _buildCastWidget(casts?[index]);
+            return _buildCastWidget(casts![index]);
           },
           itemCount: casts?.length,
           padding: EdgeInsets.only(right: m25Size, bottom: m1Size),
@@ -60,7 +60,7 @@ class CatCrewWidget extends StatelessWidget {
     }
   }
 
-  Widget _buildCastWidget(Cast? cast) {
+  Widget _buildCastWidget(Cast cast) {
     return Container(
       width: m100Size,
       child: Column(
@@ -69,14 +69,15 @@ class CatCrewWidget extends StatelessWidget {
           CircleAvatar(
             minRadius: m30Size,
             maxRadius: m45Size,
-            backgroundImage:
-                NetworkImage(IMAGE_PATH_SMALL + "${cast?.profilePath}"),
+            backgroundImage: cast.profilePath != null
+                ? NetworkImage(IMAGE_PATH_SMALL + "${cast.profilePath}")
+                : AssetImage(IMAGE_PATH_DEFAULT_AVATAT) as ImageProvider,
           ),
           SizedBox(
             height: m6Size,
           ),
           Text(
-            "${cast?.name}",
+            "${cast.name}",
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
@@ -86,7 +87,7 @@ class CatCrewWidget extends StatelessWidget {
             height: m8Size,
           ),
           Text(
-            "${cast?.knownForDepartment}",
+            "${cast.knownForDepartment}",
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(color: Color(0xFF9A9BB2), fontSize: m16Size),

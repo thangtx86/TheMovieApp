@@ -19,8 +19,10 @@ class HeaderMovieDetail extends StatelessWidget {
           height: size.height * 0.35 - 42,
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image:
-                      NetworkImage(IMAGE_PATH_LARGE + (movie.posterPath ?? "")),
+                  image: movie.posterPath != null
+                      ? NetworkImage(
+                          IMAGE_PATH_LARGE + (movie.posterPath ?? ""))
+                      : AssetImage(IMAGE_PATH_DEFAULT) as ImageProvider,
                   fit: BoxFit.cover),
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(m30Size),
