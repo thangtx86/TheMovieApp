@@ -10,7 +10,7 @@ class SplashBloc extends BaseBloc {
 
   Future fakeLoading() async {
     _splashSubject.add(SplashState.LOADING);
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 3));
     _splashSubject.add(SplashState.DONE);
   }
 

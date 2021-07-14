@@ -24,6 +24,7 @@ class _SplashWidget extends StatefulWidget {
 class _SplashWidgetState extends State<_SplashWidget> {
   late SplashBloc _splashBloc;
 
+  Tween _scaleTween = Tween<double>(begin: 1, end: 2);
   @override
   void initState() {
     _splashBloc = context.read<SplashBloc>();
@@ -35,7 +36,7 @@ class _SplashWidgetState extends State<_SplashWidget> {
   void didChangeDependencies() {
     _splashBloc.splashStream.listen((event) {
       if (event == SplashState.DONE) {
-        Navigator.pushReplacementNamed(context, RouteConfig.HOME_SCREEN);
+        Navigator.pushReplacementNamed(context, RouteConfig.LOGIN_SCREEN);
       }
     });
     super.didChangeDependencies();
@@ -46,14 +47,19 @@ class _SplashWidgetState extends State<_SplashWidget> {
     return Container(
       color: Color(0xFF243142),
       child: Center(
-          child: Text(
-        "Movie App",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 22,
-          decoration: TextDecoration.none,
+        child: TweenAnimationBuilder(
+          tween: _scaleTween,
+          duration: Duration(milliseconds: 600),
+          builder: (context, scale, child) {
+            return Transform.scale(scale: scale as double, child: child);
+          },
+          child: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/logo.png"))),
+          ),
         ),
-      )),
+      ),
     );
   }
 }

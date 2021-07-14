@@ -4,6 +4,7 @@ import 'package:movieapp/screens/detail/movie_detail_bloc.dart';
 
 import 'package:movieapp/screens/home/home_bloc.dart';
 import 'package:movieapp/screens/movie_list/movie_list_bloc.dart';
+import 'package:movieapp/screens/signin/login_bloc.dart';
 import 'package:movieapp/screens/splash/splash_bloc.dart';
 import 'package:movieapp/data/network/api_impl.dart';
 import 'package:movieapp/data/network/api_movie.dart';
@@ -39,6 +40,7 @@ void provideBlocModule() {
   locator.registerSingleton<SplashBloc>(SplashBloc());
   locator
       .registerFactory<HomeBloc>(() => HomeBloc(locator<IMovieRespository>()));
+  locator.registerFactory<LoginBloc>(() => LoginBloc());
 
   locator.registerFactory<MovieListBloc>(
       () => MovieListBloc(locator<IMovieRespository>()));

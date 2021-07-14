@@ -47,7 +47,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       key: _drawerKey,
       backgroundColor: Colors.white,
       appBar: _buildAppBar(),
-      drawer: Drawer(child: NavigationDrawer()),
+      drawer: Drawer(child: NavigationDawable()),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
