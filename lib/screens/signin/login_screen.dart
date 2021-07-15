@@ -217,31 +217,36 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                         ),
                       ),
-                      Container(
-                        width: 145,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 6),
-                        decoration: BoxDecoration(
-                            color: Color(0xffF55362),
-                            borderRadius: new BorderRadius.all(
-                              Radius.circular(20.0),
-                            )),
-                        child: Row(
-                          children: <Widget>[
-                            SvgPicture.asset(
-                              "assets/images/google.svg",
-                              width: 30,
-                              height: 30,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "Google",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 14),
-                            )
-                          ],
+                      GestureDetector(
+                        onTap: () {
+                          _loginBloc.ggSignIn();
+                        },
+                        child: Container(
+                          width: 145,
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+                          decoration: BoxDecoration(
+                              color: Color(0xffF55362),
+                              borderRadius: new BorderRadius.all(
+                                Radius.circular(20.0),
+                              )),
+                          child: Row(
+                            children: <Widget>[
+                              SvgPicture.asset(
+                                "assets/images/google.svg",
+                                width: 30,
+                                height: 30,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Google",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 14),
+                              )
+                            ],
+                          ),
                         ),
                       )
                     ],
