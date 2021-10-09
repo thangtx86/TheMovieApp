@@ -55,8 +55,10 @@ class _SplashWidgetState extends State<_SplashWidget> {
           },
           child: Container(
             decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/images/logo.png"),),),
+              image: DecorationImage(
+                image: AssetImage("assets/images/logo.png"),
+              ),
+            ),
           ),
         ),
       ),
