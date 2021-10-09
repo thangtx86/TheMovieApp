@@ -36,7 +36,7 @@ class _SplashWidgetState extends State<_SplashWidget> {
   void didChangeDependencies() {
     _splashBloc.splashStream.listen((event) {
       if (event == SplashState.DONE) {
-        Navigator.pushReplacementNamed(context, RouteConfig.LOGIN_SCREEN);
+        Navigator.pushReplacementNamed(context, RouteConfig.HOME_SCREEN);
       }
     });
     super.didChangeDependencies();
@@ -56,7 +56,7 @@ class _SplashWidgetState extends State<_SplashWidget> {
           child: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/images/logo.png"))),
+                    image: AssetImage("assets/images/logo.png"),),),
           ),
         ),
       ),
